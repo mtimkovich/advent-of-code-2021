@@ -13,8 +13,8 @@ fn main() -> Result<()> {
 
 fn part1(input: &Vec<u32>) {
     let mut increases = 0;
-    for (i, depth) in input.iter().enumerate().skip(1) {
-        if input[i - 1] < *depth {
+    for i in 1..input.len() {
+        if input[i - 1] < input[i] {
             increases += 1;
         }
     }
@@ -25,7 +25,7 @@ fn part1(input: &Vec<u32>) {
 fn part2(input: &Vec<u32>) {
     let mut increases = 0;
     let mut prev = None;
-    for (i, _) in input.iter().enumerate().skip(2) {
+    for i in 2..input.len() {
         let window = input[i] + input[i - 1] + input[i - 2];
 
         if let Some(prev) = prev {
